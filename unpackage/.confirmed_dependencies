@@ -1,12 +1,22 @@
 {
 	"index.html": {
 		"refer": [
-			"login.html"
+			"login.html",
+			"player.html",
+			"main.html"
+		],
+		"resources": [
+			"main.html"
 		]
 	},
 	"login.html": {
 		"refer": [
 			"index.html"
+		]
+	},
+	"main.html": {
+		"refer": [
+			"player.html"
 		]
 	}
 }

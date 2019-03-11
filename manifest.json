@@ -129,9 +129,12 @@
 	"dependencies": {
 		"pages": {
 			"index.html": {
-				"resources": [],
+				"resources": [
+					"main.html"
+				],
 				"refer": [
-					"login.html"
+					"login.html",
+					"player.html"
 				],
 				"priority": 0
 			},
@@ -139,6 +142,13 @@
 				"resources": [],
 				"refer": [
 					"index.html"
+				],
+				"priority": 0
+			},
+			"main.html": {
+				"resources": [],
+				"refer": [
+					"player.html"
 				],
 				"priority": 0
 			}
