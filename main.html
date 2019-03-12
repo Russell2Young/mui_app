@@ -123,7 +123,7 @@
     mui.init();
     
     mui.plusReady(function(){
-    		mui.post("http://192.168.15.45:9528/get_content_list", {},
+    		mui.post(window.serv_content, {},
     		
     		function(data){
     			console.log(JSON.stringify(data));
@@ -151,7 +151,7 @@
     		
     		var imgtag = document.createElement("img");
     		imgtag.className = "mui-media-object mui-pull-left";
-    		imgtag.src = "http://192.168.15.45:9528/get_image/" + content.cover;
+    		imgtag.src = window.serv_image + content.cover;
     		
     		var divtag = document.createElement("div");
     		divtag.className = "mui-media-body";
@@ -170,23 +170,13 @@
     }
     
     //设置窗体标题
-    var Sdata = null;
-    mui.plusReady(function(){
-    		Sdata = plus.webview.currentWebview();
-    		console.log(JSON.stringify(Sdata));
-    		document.getElementById("title").innerText = Sdata.username
-    })
-    //跳转到登录页面
-    document.getElementById('login').addEventListener('tap',function () {
-            mui.openWindow({
-            	url:"login.html",
-            	id:"login.html",
-            	styles:{
-            		top:"0px",  // 新页面顶部的位置
-            		bottom:"50px"  //新页面底部的位置-底部高50px，正好能把下面的图标全露出来
-            	}
-            });
-    })
+//  var Sdata = null;
+//  mui.plusReady(function(){
+//  		Sdata = plus.webview.currentWebview();
+//  		console.log(JSON.stringify(Sdata));
+//  		document.getElementById("title").innerText = Sdata.username
+//  })
+
     </script>
 </body>
 </html>

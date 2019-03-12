@@ -17,7 +17,7 @@
         </div>
         <button type="button" class="mui-btn mui-btn-red mui-btn-block" id="pause">暂停</button>
         <button type="button" class="mui-btn mui-btn-green mui-btn-block" id="resume">继续</button>
-        <button type="button" class="mui-btn mui-btn-yellow mui-btn-block">按钮</button>
+        <button type="button" class="mui-btn mui-btn-yellow mui-btn-block" id="send2boy">发送给玩具</button>
         <button type="button" class="mui-btn mui-btn-blue mui-btn-block">按钮</button>
     </div>
     <script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
@@ -25,24 +25,32 @@
     mui.init();
     var Sdata = null;
     var plsyer = null;
+    var ws = null;
     mui.plusReady(function(){
     		Sdata = plus.webview.currentWebview();
     		document.getElementById("title").innerText = Sdata.title;
-    		document.getElementById("cover").src = "http://192.168.15.45:9528/get_image/" + Sdata.cover;
-    		player = plus.audio.createPlayer("http://192.168.15.45:9528/get_music/" + Sdata.music);
+    		document.getElementById("cover").src = window.serv_image + Sdata.cover;
+    		player = plus.audio.createPlayer(window.serv_music + Sdata.music);
     		// player == AudioPlayer
     		player.play(function(){
     			mui.toast("音乐播放完成")
     		})
-    })
+    		ws = new WebSocket(window.ws_serv + "myapp");
+    		
+    });
     
     document.getElementById("pause").addEventListener('tap', function () {
     		player.pause();
-    })
+    });
     
     document.getElementById("resume").addEventListener('tap', function () {
     		player.resume();
-    })
+    });
+    
+    document.getElementById("send2boy").addEventListener('tap',function () {
+    		var send_str = {to_user:"123",music:Sdata.music};
+    		ws.send(JSON.stringify(send_str));
+    });
     </script>
 </body>
 </html>
