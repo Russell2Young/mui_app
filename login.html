@@ -32,13 +32,14 @@
 		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
-			//登录
+			
+			//检验并登录
 			document.getElementById('login-btn').addEventListener('tap', function() {
 				console.log("~~~~~~~~~~~~")
 				var username = document.getElementById("username").value;
 				var passwd = document.getElementById("password").value;
 				// 提交
-				mui.post("http://192.168.15.55:9527/login", {
+				mui.post(window.serv + "/login/", {
 						"username": username,
 						"password": passwd,
 					}, function(data) {
@@ -62,19 +63,13 @@
 				);
 			});
 
-			// 注册
+			// 跳转到注册页面
 			document.getElementById('register-btn').addEventListener('tap', function() {
 				console.log("++++++++++++++++++")
-				var username = document.getElementById("username").value;
-				var passwd = document.getElementById("password").value;
-				//          var reg = document.getElementById("register-btn").value;
-				mui.post("http://192.168.15.55:9527/login", {
-					"username": username,
-					"password": passwd,
-					"msg": "reg",
-				}, function(data) {
-					console.log(data);
-					console.log(JSON.stringify(data));
+				
+				mui.openWindow({
+					url:"reg.html",
+					id:"reg.html"
 				})
 			});
 		</script>

@@ -36,13 +36,13 @@
 				</div>
 				<div class="mui-input-row mui-radio mui-left">
 					<label>父亲</label>
-					<input type="radio" name="gender" checked />
+					<input type="radio" name="gender" value="2" />
 					<!--<label>母亲</label>
 					<input type="radio" name="gender" checked />-->
 				</div>
 				<div class="mui-input-row mui-radio mui-left">
 					<label>母亲</label>
-					<input type="radio" name="gender" checked />
+					<input type="radio" name="gender" value="1" checked/>
 				</div>
 				<div class="mui-button-row">
 					<button type="button" class="mui-btn mui-btn-primary" id="reg-btn">注册</button>
@@ -60,12 +60,29 @@
 				var repassword = document.getElementById("repassword").value;
 				if(password != repassword){
 					mui.toast("两次密码输入不一致");
+					return
 				}
 				
 				var phone = document.getElementById("phone").value;
 				
-				var gender = document
-			})
+				var gender = document.getElementsByName("gender");
+				var gender_true = null;
+				for (var i = 0; i < gender.length; i++) {
+					if(gender[i].checked){
+						gender_true = gender[i].value;
+						console.log(gender_true);
+					}
+				}
+				
+				mui.post(window.serv + "/reg", {
+					"username": username,
+					"password": password,
+					"phone": phone,
+					"gender": gender_true,
+				},function(data){
+					console.log(JSON.stringify(data));
+				}, 'json');
+			});
 		</script>
 	</body>
 

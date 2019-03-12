@@ -141,7 +141,8 @@
 			"login.html": {
 				"resources": [],
 				"refer": [
-					"index.html"
+					"index.html",
+					"reg.html"
 				],
 				"priority": 0
 			},
