@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="mui-bar mui-bar-tab">
-    		    <a class="mui-tab-item mui-active">
+    		    <a class="mui-tab-item mui-active" id="main">
     		        <span class="mui-icon mui-icon-home"></span>
     		        <span class="mui-tab-label">首页</span>
     		    </a>
@@ -29,11 +29,11 @@
     <script type="text/javascript">
     mui.init({
     		subpages:[{
-      		url:"main.html",//子页面HTML地址，支持本地地址和网络地址
-      		id:"main.html",//子页面标志
+      		url:"main.html", //子页面HTML地址，支持本地地址和网络地址
+      		id:"main.html", //子页面标志
       		styles:{
-        			top:"0px",//子页面顶部位置
-        			bottom:"50px",//子页面底部位置
+        			top:"0px", //子页面顶部位置
+        			bottom:"50px", //子页面底部位置
 //      			width:subpage-width,//子页面宽度，默认为100%
 //      			height:subpage-height,//子页面高度，默认为100%
       		},
@@ -41,16 +41,56 @@
     		}]
     });
     
+    // 检验是否是已登录状态
+    var user_data = null;
+    if (window.localStorage.getItem("user_id")) {
+    		mui.post(window.serv + '/auto_login',{
+    				_id: window.localStorage.getItem("user_id")
+    			},function(data){
+    				mui.toast(data.msg);
+    				if (data != 1){
+    					window.localStorage.removeItem("user_id");
+    				}else{
+    					user_data = data.data;
+    				}
+    			},'json'
+    		);
+    }
+    	
+    	// 首页图标绑定main.html
+    document.getElementById("main").addEventListener('tap', function(){
+    		mui.openWindow({
+		            	url:"main.html",
+		            	id:"main.html",
+		            	styles:{
+		            		top:"0px",  // 新页面顶部的位置
+		            		bottom:"50px"  //新页面底部的位置-底部高50px，正好能把下面的图标全露出来
+	            		}
+            });
+    })
+    
     //跳转到登录页面
     document.getElementById('login').addEventListener('tap',function () {
-            mui.openWindow({
-            	url:"login.html",
-            	id:"login.html",
-            	styles:{
-            		top:"0px",  // 新页面顶部的位置
-            		bottom:"50px"  //新页面底部的位置-底部高50px，正好能把下面的图标全露出来
-            	}
+            if (window.localStorage.getItem("user_id")) {
+            		mui.openWindow({
+		            	url:"user_info.html",
+		            	id:"user_info.html",
+		            	styles:{
+		            		top:"0px",  // 新页面顶部的位置
+		            		bottom:"50px"  //新页面底部的位置-底部高50px，正好能把下面的图标全露出来
+		            	},
+		            	extras:user_data,
             });
+            } else{
+            		mui.openWindow({
+		            	url:"login.html",
+		            	id:"login.html",
+		            	styles:{
+		            		top:"0px",  // 新页面顶部的位置
+		            		bottom:"50px"  //新页面底部的位置-底部高50px，正好能把下面的图标全露出来
+	            		}
+            });
+            }
     })
     </script>
 </body>

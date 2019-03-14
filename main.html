@@ -5,6 +5,7 @@
     <title>Document</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
 </head>
 <body>
     <header class="mui-bar mui-bar-nav">
@@ -59,9 +60,9 @@
     		</div>
     		<ul class="mui-table-view mui-grid-view mui-grid-9">
     		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-    		    <a href="#">
-    		        <span class="mui-icon mui-icon-home"></span>
-    		        <div class="mui-media-body">Home</div>
+    		    <a href="#" id="scan">
+    		        <span class="mui-icon iconfont icon-qr"></span>
+    		        <div class="mui-media-body">二维码1</div>
     		    </a>
     		</li>
     		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
@@ -77,9 +78,9 @@
     		    </a>
     		</li>
     		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-    		    <a href="#">
-    		        <span class="mui-icon mui-icon-location"></span>
-    		        <div class="mui-media-body">Location</div>
+    		    <a href="#" id="scanqr">
+    		        <span class="mui-icon iconfont icon-qrcode"></span>
+    		        <div class="mui-media-body">二维码2</div>
     		    </a>
     		</li>
     		<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
@@ -128,12 +129,12 @@
     		function(data){
     			console.log(JSON.stringify(data));
     			for (var i = 0; i < data.length; i++) {
-    				console.log(JSON.stringify(data[i]))
+//  				console.log(JSON.stringify(data[i]))
     				create_music(data[i])
     			}
     			
     		}, "json")
-    })
+    });
     
     function create_music(content){
     		
@@ -147,7 +148,7 @@
     				id:"player.html",
     				extras:content,
     			})
-    		}
+    		};
     		
     		var imgtag = document.createElement("img");
     		imgtag.className = "mui-media-object mui-pull-left";
@@ -167,7 +168,29 @@
     		divtag.appendChild(ptag);
     		
     		document.getElementById("content_list").appendChild(litag);
-    }
+    };
+    
+    document.getElementById("scan").addEventListener('tap', function(){
+    		mui.openWindow({
+    				url:"scan.html",
+		            	id:"scan.html",
+		            	styles:{
+		            		top:"0px",  
+		            		bottom:"50px",
+	            		}	
+    		});
+    });
+    
+    document.getElementById("scanqr").addEventListener('tap', function(){
+    		mui.openWindow({
+    				url:"scanqr.html",
+		            	id:"scanqr.html",
+		            	styles:{
+		            		top:"0px",  
+		            		bottom:"50px",
+	            		}	
+    		});
+    });
     
     //设置窗体标题
 //  var Sdata = null;

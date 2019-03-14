@@ -8,10 +8,10 @@
  * @type _L4.$|Function
  */
 window.serv = "http://192.168.15.58:9528";
-window.ws_serv = "ws://192.168.15.113:9529/app/"
+window.ws_serv = "ws://192.168.15.58:9529/app/"
 window.serv_content = window.serv + "/get_content_list";
 window.serv_image = window.serv + "/get_image/";
-window.serv_music = window.servc + "/get_music/";
+window.serv_music = window.serv + "/get_music/";
 
 var mui = (function(document, undefined) {
 	var readyRE = /complete|loaded|interactive/;

@@ -3,7 +3,8 @@
 		"refer": [
 			"login.html",
 			"player.html",
-			"main.html"
+			"main.html",
+			"user_info.html"
 		],
 		"resources": [
 			"main.html"
@@ -12,12 +13,21 @@
 	"login.html": {
 		"refer": [
 			"index.html",
-			"reg.html"
+			"reg.html",
+			"main.html",
+			"user_info.html"
 		]
 	},
 	"main.html": {
 		"refer": [
-			"player.html"
+			"player.html",
+			"scan.html",
+			"scanqr.html"
+		]
+	},
+	"user_info.html": {
+		"refer": [
+			"login.html"
 		]
 	}
 }

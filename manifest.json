@@ -134,7 +134,8 @@
 				],
 				"refer": [
 					"login.html",
-					"player.html"
+					"player.html",
+					"user_info.html"
 				],
 				"priority": 0
 			},
@@ -142,14 +143,25 @@
 				"resources": [],
 				"refer": [
 					"index.html",
-					"reg.html"
+					"reg.html",
+					"main.html",
+					"user_info.html"
 				],
 				"priority": 0
 			},
 			"main.html": {
 				"resources": [],
 				"refer": [
-					"player.html"
+					"player.html",
+					"scan.html",
+					"scanqr.html"
+				],
+				"priority": 0
+			},
+			"user_info.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
 				],
 				"priority": 0
 			}

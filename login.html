@@ -30,6 +30,7 @@
 			</form>
 		</div>
 		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/md5.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
 			
@@ -39,23 +40,29 @@
 				var username = document.getElementById("username").value;
 				var passwd = document.getElementById("password").value;
 				// 提交
-				mui.post(window.serv + "/login/", {
+				mui.post(window.serv + "/login", {
 						"username": username,
-						"password": passwd,
+						"password": hex_md5(passwd),
 					}, function(data) {
-						console.log(data);
+						console.log("login.html: data信息");
 						console.log(JSON.stringify(data));
 
 						mui.toast(data.msg);
 						if(data.code == 1) {
+							window.localStorage.setItem("user_id", data.data._id);
 							mui.openWindow({
-								url: "index.html",
-								id: "index.html",
-								extras: { //窗体间传值
-									username: data.nick,
-									pa: "666"
+								url: "user_info.html",
+								id: "user_info.html",
+								styles:{
+									top:"0px",
+									bottom:"50px"
 								},
-								createNew: true //创建一个新的恶窗体
+								createNew: true, //创建一个新的窗体
+								extras:data.data,
+//								extras: { //窗体间传值
+//									username: data.nick,
+//									pa: "666"
+//								},
 							});
 						}
 					},

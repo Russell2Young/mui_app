@@ -31,6 +31,8 @@
     		document.getElementById("title").innerText = Sdata.title;
     		document.getElementById("cover").src = window.serv_image + Sdata.cover;
     		player = plus.audio.createPlayer(window.serv_music + Sdata.music);
+    		console.log(JSON.stringify(player))
+    		console.log(Sdata.music)
     		// player == AudioPlayer
     		player.play(function(){
     			mui.toast("音乐播放完成")
