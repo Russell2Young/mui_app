@@ -161,7 +161,29 @@
 			"user_info.html": {
 				"resources": [],
 				"refer": [
-					"login.html"
+					"login.html",
+					"toy_manage.html"
+				],
+				"priority": 0
+			},
+			"toy_manage.html": {
+				"resources": [],
+				"refer": [
+					"scanqr.html"
+				],
+				"priority": 0
+			},
+			"scanqr.html": {
+				"resources": [],
+				"refer": [
+					"bind_toy.html"
+				],
+				"priority": 0
+			},
+			"bind_toy.html": {
+				"resources": [],
+				"refer": [
+					"toy_manage.html"
 				],
 				"priority": 0
 			}

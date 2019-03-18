@@ -47,9 +47,16 @@
 					device_key:result
 					}, function(data){
 						console.log(JSON.stringify(data));
+						//1，绑定是授权的二维码
 						if(data.code == 0){
-							alert(data.msg + "可以开始绑定");
+							alert(data.msg + "可以开始绑定你的玩具了");
+							mui.openWindow({
+								url:"bind_toy.html",
+								id:"bind_toy.html",
+								extras:data.data,
+							})
 						}else{
+							//2，不是授权的key
 							alert(data.msg);
 //							mui.back();
 						}

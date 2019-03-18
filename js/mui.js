@@ -7,8 +7,10 @@
  * MUI核心JS
  * @type _L4.$|Function
  */
-window.serv = "http://192.168.15.58:9528";
-window.ws_serv = "ws://192.168.15.58:9529/app/"
+//window.serv = "http://192.168.15.58:9528";
+//window.ws_serv = "ws://192.168.15.58:9529/app/"
+window.serv = "http://192.168.199.143:9528";
+window.ws_serv = "ws://192.168.199.143:9529/app/"
 window.serv_content = window.serv + "/get_content_list";
 window.serv_image = window.serv + "/get_image/";
 window.serv_music = window.serv + "/get_music/";

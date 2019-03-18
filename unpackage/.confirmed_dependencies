@@ -27,7 +27,23 @@
 	},
 	"user_info.html": {
 		"refer": [
-			"login.html"
+			"login.html",
+			"toy_manage.html"
+		]
+	},
+	"toy_manage.html": {
+		"refer": [
+			"scanqr.html"
+		]
+	},
+	"scanqr.html": {
+		"refer": [
+			"bind_toy.html"
+		]
+	},
+	"bind_toy.html": {
+		"refer": [
+			"toy_manage.html"
 		]
 	}
 }
